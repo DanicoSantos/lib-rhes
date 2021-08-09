@@ -1,2 +1,2 @@
-# lib-rhes
-A system to manage a small library
+# Lib Rhes
+A django system to manage a small library
