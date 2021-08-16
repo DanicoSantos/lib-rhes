@@ -19,7 +19,7 @@ class Languages(models.Model):
 
     def __str__(self):
         return self.name
-        
+
 
 class Book(models.Model):
     """Model representing a book (but not a specific copy)."""
@@ -68,7 +68,8 @@ class BookInstance(models.Model):
         help_text='Book availability',
     )
 
-    language = models.ManyToManyField(Languages, help_text='Select a language for this book')
+    language = models.ManyToManyField(
+        Languages, help_text='Select a language for this book')
 
     class Meta:
         ordering = ['due_back']
@@ -95,7 +96,3 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object"""
         return f'{self.last_name}, {self.first_name}'
-
-
-
-    

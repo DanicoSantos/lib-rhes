@@ -27,8 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CORS_ALLOED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
+    'http://192.168.0.247:8080'
 ]
 
 
