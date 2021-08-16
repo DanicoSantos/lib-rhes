@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     submitForm() {
-      this.error = []
+      this.errors = []
 
       if (this.username === '') {
         this.errors.push('The username is missing')
@@ -102,8 +102,20 @@ export default {
               type: 'is-success',
               dismissible: true,
               pauseOnHover: true,
-              
+              duration: 2000,
+              position: 'bottom-right',
             })
+
+            this.$router.push('/log-in')
+          })
+          .catch(error => {
+            if (error.response) {
+              for (const property in error.response.data) {
+                this.errors.push(`${property}: ${error.response.data[property]}`)
+              }
+            } else if (error.message) {
+              this.errors.push('Something went wrong. Please try again!')
+            }
           })
       }
     },
