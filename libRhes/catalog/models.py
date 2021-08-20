@@ -38,7 +38,8 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
-        return reverse("book-detail", args={str(self.id)})
+        return reverse('books',args={str(self.id)})
+
 
     def display_genre(self):
         """Create a string for the Genre. This is required to display genre in Admin."""

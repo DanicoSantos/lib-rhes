@@ -14,14 +14,27 @@
         </figure>
       </div>
       <div class="column is-8">
-        <div
-          class="container is-flex is-flex-direction column"
-          v-for="item in bookInstance"
-          v-bind:key="item.id"
-        >
-            <p><strong>Autor:</strong> {{ item.book.author.first_name }} {{ item.book.author.last_name }}</p>
-            <p><strong>Status: </strong> <span class="tag is-warning">{{ item.status }}</span></p>
-            <p><strong>Gêneros:</strong> {{ item.book.display_genre }}</p>
+        <div class="container is-flex is-flex-direction-column">
+          {{ bookInstance.book }}
+          <p class="my-4">
+            <strong>Autor:</strong> {{ bookInstance.book.author.first_name }}
+            {{ bookInstance.book.author.last_name }}
+          </p>
+          <p class="my-4">
+            <strong>Status: </strong>
+            <span class="tag is-warning">{{ bookInstance.status }}</span>
+          </p>
+          <p><strong>Resumo:</strong></p>
+          <p class="mb-4">{{ bookInstance.book.summary }}</p>
+          <!-- <p class="my-4">
+            <strong>Gêneros:</strong>
+            <span
+              v-for="genre in bookInstance.book.genre"
+              v-bind:key="genre.id"
+            >
+            <span class="tag is-primary">{{ genre.name }}</span>
+            </span>
+          </p> -->
         </div>
       </div>
     </div>
@@ -58,6 +71,8 @@ export default {
           this.pageTitle = this.bookInstance.book.title;
 
           this.bookId = this.bookInstance.book.id;
+
+          console.log(typeof this.bookInstance);
         })
         .catch((error) => {
           console.log(error);
